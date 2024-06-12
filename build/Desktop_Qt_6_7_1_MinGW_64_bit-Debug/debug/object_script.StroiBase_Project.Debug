@@ -1,0 +1,14 @@
+debug/clients.o
+debug/database_sql.o
+debug/drivers.o
+debug/main.o
+debug/materials.o
+debug/orderstroibase.o
+debug/suppliers.o
+debug/qrc_qml.o
+debug/moc_clients.o
+debug/moc_database_sql.o
+debug/moc_drivers.o
+debug/moc_materials.o
+debug/moc_orderstroibase.o
+debug/moc_suppliers.o

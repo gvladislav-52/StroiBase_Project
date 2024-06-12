@@ -1,0 +1,14 @@
+release/clients.o
+release/database_sql.o
+release/drivers.o
+release/main.o
+release/materials.o
+release/orderstroibase.o
+release/suppliers.o
+release/qrc_qml.o
+release/moc_clients.o
+release/moc_database_sql.o
+release/moc_drivers.o
+release/moc_materials.o
+release/moc_orderstroibase.o
+release/moc_suppliers.o

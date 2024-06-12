@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Materials_page.qml</file>
+        <file>Clients_page.qml</file>
+        <file>Driver_page.qml</file>
+        <file>Header.qml</file>
+        <file>Main_page.qml</file>
+        <file>Orders_page.qml</file>
+        <file>Supplier_page.qml</file>
+    </qresource>
+</RCC>
