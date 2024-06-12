@@ -3,9 +3,9 @@ import QtQuick.Controls 2.15
 
 ApplicationWindow {
     visible: true
-    minimumWidth: 600
-    minimumHeight: 300
-    title: "Transport company"
+    minimumWidth: 800
+    minimumHeight: 500
+    title: "StroiBase"
 
     Main_page
     {
@@ -47,6 +47,13 @@ ApplicationWindow {
     Supplier_page
     {
         id: supplier_page
+        visible: false
+        enabled: false
+    }
+
+    Report
+    {
+        id: report_page
         visible: false
         enabled: false
     }

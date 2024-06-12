@@ -10,7 +10,7 @@ Rectangle
     Layout.alignment: Qt.AlignHCenter
     Layout.preferredWidth: parent.width
     Layout.preferredHeight: parent.height * 0.1
-    color: "red"
+    color: "#0B5FA5"
 
     RowLayout
     {
@@ -23,13 +23,13 @@ Rectangle
             Layout.preferredWidth: parent.width * 0.05
             background: Rectangle
             {
-                color: parent.pressed ? "gray" : (parent.hovered ? "darkred" : "transparent")
+                color: parent.pressed ? "#00733E" : (parent.hovered ? "#00B060" : "transparent")
                 radius: parent.height * 0.1
             }
             Image
             {
                 anchors.centerIn: parent
-                source: "qrc:/Button/arrow.png"
+                source: "qrc:/Image/ButtonIcon/arrow.png"
                 width: parent.width * 0.7
                 height: parent.height * 0.7
                 fillMode: Image.PreserveAspectFit

@@ -8,5 +8,14 @@
         <file>Main_page.qml</file>
         <file>Orders_page.qml</file>
         <file>Supplier_page.qml</file>
+        <file>Image/detail.png</file>
+        <file>Image/ButtonIcon/delete.png</file>
+        <file>Image/ButtonIcon/delete2.png</file>
+        <file>Image/ButtonIcon/leftArrow.png</file>
+        <file>Image/ButtonIcon/save.png</file>
+        <file>Image/ButtonIcon/add.png</file>
+        <file>Image/ButtonIcon/arrow.png</file>
+        <file>Image/STROIBASE.png</file>
+        <file>Report.qml</file>
     </qresource>
 </RCC>

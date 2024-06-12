@@ -6,9 +6,18 @@ Rectangle {
     anchors.fill: parent
     color: "lightgray"
 
-    property var parameters_name: ["id Клиента","Название компании","Контактное лицо","Контактный телефон","E-mail"]
-    property var button_name: ["qrc:/Button/arrow.png","qrc:/Button/add.png","qrc:/Button/save.png","qrc:/Button/del.png","qrc:/Button/arrow.png"]
+    property var parameters_name: ["№ Клиентa:","ФИО:","Номер телефона:","Email:","Адрес проживания:"]
+    property var button_name:  ["qrc:/Image/ButtonIcon/leftArrow.png","qrc:/Image/ButtonIcon/add.png","qrc:/Image/ButtonIcon/save.png","qrc:/Image/ButtonIcon/delete.png","qrc:/Image/ButtonIcon/leftArrow.png"]
     property bool newData: false
+
+    Image
+    {
+        source: "qrc:/Image/detail.png"
+        anchors.centerIn: parent
+        width: parent.width* 0.8
+        height: parent.height * 0.8
+        fillMode: Image.PreserveAspectFit
+    }
 
     ColumnLayout
     {
@@ -41,7 +50,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredHeight: parent.height*0.075
                     Layout.preferredWidth: parent.width *0.9
-                    color: "red"
+                    color: "#0B5FA5"
                     border.color: "black"
                     border.width: parent.height * 0.0025
                     clip: true
@@ -79,7 +88,7 @@ Rectangle {
                 Layout.alignment: Qt.AlignLeft
                 Layout.preferredHeight: parent.height*0.075
                 Layout.preferredWidth: parent.width *0.9
-                color: "gray"
+                color: "#00733E"
                 enabled: false
                 border.color: "black"
                 border.width: parent.height * 0.0025
@@ -162,7 +171,7 @@ Rectangle {
                 Layout.preferredWidth: parent.width * 0.15
                 background: Rectangle
                 {
-                    color: parent.pressed ? "red" : (parent.hovered ? "darkred" : "gray")
+                    color: parent.pressed ? "#00733E" : (parent.hovered ? "#00B060" : "#00733E")
 
                     radius: parent.height * 0.1
                     border.color: "black"

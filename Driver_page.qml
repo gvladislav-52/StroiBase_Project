@@ -7,9 +7,18 @@ Rectangle {
     color: "lightgray"
 
     property var parameters_name: ["№ Страницы","Фамилия","Имя","Отчетство","Водит. удостоверение","Контактный телефон","E-mail","ГосНомер ТС"]
-    property var button_name: ["qrc:/Button/arrow.png","qrc:/Button/add.png","qrc:/Button/save.png","qrc:/Button/del.png","qrc:/Button/arrow.png"]
+    property var button_name:  ["qrc:/Image/ButtonIcon/leftArrow.png","qrc:/Image/ButtonIcon/add.png","qrc:/Image/ButtonIcon/save.png","qrc:/Image/ButtonIcon/delete.png","qrc:/Image/ButtonIcon/leftArrow.png"]
     property bool newData: false
         property var imageBufferText
+
+    Image
+    {
+        source: "qrc:/Image/detail.png"
+        anchors.centerIn: parent
+        width: parent.width* 0.8
+        height: parent.height * 0.8
+        fillMode: Image.PreserveAspectFit
+    }
 
     ColumnLayout
     {
@@ -41,7 +50,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredHeight: parent.height*0.05
                     Layout.preferredWidth: parent.width *0.9
-                    color: "red"
+                    color: "#0B5FA5"
                     border.color: "black"
                     border.width: parent.height * 0.0025
                     clip: true
@@ -78,7 +87,7 @@ Rectangle {
                 Layout.alignment: Qt.AlignLeft
                 Layout.preferredHeight: parent.height*0.05
                 Layout.preferredWidth: parent.width *0.9
-                color: "gray"
+                color: "#00733E"
                 enabled: false
                 border.color: "black"
                 border.width: parent.height * 0.0025
@@ -165,7 +174,7 @@ Rectangle {
                    anchors.centerIn: parent
                    width: parent.width
                    height: parent.height
-                   color: "gray"
+                   color: "#00733E"
                    clip: true
                    border.color: "black"
                    border.width: parent.height * 0.01
@@ -247,7 +256,7 @@ Rectangle {
                            Layout.preferredWidth: parent.width * 0.1
                            background: Rectangle
                            {
-                               color: parent.pressed ? "gray" : (parent.hovered ? "darkred" : "red")
+                               color: parent.pressed ? "#00733E" : (parent.hovered ? "#00B060" : "#00733E")
 
                                radius: parent.height * 0.1
                                border.color: "black"
@@ -312,7 +321,7 @@ Rectangle {
                        Layout.preferredWidth: parent.width * 0.15
                        background: Rectangle
                        {
-                           color: parent.pressed ? "red" : (parent.hovered ? "darkred" : "gray")
+                           color: parent.pressed ? "#00733E" : (parent.hovered ? "#00B060" : "#00733E")
 
                            radius: parent.height * 0.1
                            border.color: "black"

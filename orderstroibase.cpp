@@ -20,7 +20,7 @@ void OrderStroiBase::setInvoiceIndex(int num)
 void OrderStroiBase::order_clearVector()
 {
     m_Order_vector.clear();
-    m_Order_vector.assign(7,"");
+    m_Order_vector.assign(6,"");
     emit Order_vectorChanged();
 }
 

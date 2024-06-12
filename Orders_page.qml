@@ -7,9 +7,9 @@ Rectangle {
     anchors.fill: parent
     color: "lightgray"
 
-    property var parameters_name: ["id Заказа","id Клиента","id Водителя","Дата размещения","Дата назначения","Дата исполнения","Адрес доставки"]
-    property var button_name: ["qrc:/Button/arrow.png","qrc:/Button/add.png","qrc:/Button/save.png","qrc:/Button/del.png","qrc:/Button/arrow.png"]
-    property var label_name: ["Марка","Модель","Объем","Мощность","Количество","Скидка","Итоговая цена"]
+    property var parameters_name: ["№ Заказа:","Клиент:","Водитель:","Дата поставки:","Адрес:"]
+    property var button_name:  ["qrc:/Image/ButtonIcon/leftArrow.png","qrc:/Image/ButtonIcon/add.png","qrc:/Image/ButtonIcon/save.png","qrc:/Image/ButtonIcon/delete.png","qrc:/Image/ButtonIcon/leftArrow.png"]
+    property var label_name: ["Поставщик","Материал","Гарантия","Партия","Количество","Скидка","Итоговая цена"]
 
     property var supplier_vector_order
     property var model_vector_order
@@ -68,13 +68,13 @@ Rectangle {
 
                 Repeater
                 {
-                    model: 7
+                    model: 5
                     Rectangle
                     {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.preferredHeight: parent.height*0.1
                         Layout.preferredWidth: parent.width *0.9
-                        color: "red"
+                        color: "#0B5FA5"
                         border.color: "black"
                         border.width: parent.height * 0.005
                         clip: true
@@ -105,7 +105,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft
                     Layout.preferredHeight: parent.height*0.1
                     Layout.preferredWidth: parent.width *0.9
-                    color: "gray"
+                    color: "#00733E"
                     border.color: "black"
                     border.width: parent.height * 0.005
                     clip: true
@@ -137,7 +137,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft
                     Layout.preferredHeight: parent.height*0.1
                     Layout.preferredWidth: parent.width *0.9
-                    color: "gray"
+                    color: "#00733E"
                     border.color: "black"
                     border.width: parent.width * 0.001
                     clip: true
@@ -157,7 +157,7 @@ Rectangle {
                         currentIndex: 0
 
                         background: Rectangle {
-                            color: "gray"
+                            color: "#00733E"
                         border.width: parent && parent.activeFocus ? 2 : 1
                         }
 
@@ -186,7 +186,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft
                     Layout.preferredHeight: parent.height*0.1
                     Layout.preferredWidth: parent.width *0.9
-                    color: "gray"
+                    color: "#00733E"
                     border.color: "black"
                     border.width: parent.width * 0.001
                     clip: true
@@ -206,7 +206,7 @@ Rectangle {
                         currentIndex: 0
 
                         background: Rectangle {
-                            color: "gray"
+                            color: "#00733E"
                         border.width: parent && parent.activeFocus ? 2 : 1
                         }
 
@@ -232,7 +232,7 @@ Rectangle {
 
                 Repeater
                 {
-                    model: 4
+                    model: 2
                     Rectangle
                     {
                         Layout.alignment: Qt.AlignLeft
@@ -371,7 +371,7 @@ Rectangle {
                             Layout.alignment: Qt.AlignHCenter
                             Layout.preferredWidth: parent.width/7.05
                             Layout.preferredHeight: parent.height
-                            color: "gray"
+                            color: "#00733E"
                             border.color: "black"
                             border.width: parent.width * 0.001
 
@@ -535,11 +535,11 @@ Rectangle {
                                         onTextChanged:
                                         {
                                             modelsComboBox[ebanIndex] = model_text.text
-                                            volume_text.text = Database.getItemMaterials(model_text.text,4)
+                                            volume_text.text = Database.getItemMaterials(model_text.text,5)
                                             volume[ebanIndex] = volume_text.text
-                                            power_text.text = Database.getItemMaterials(model_text.text,5)
+                                            power_text.text = Database.getItemMaterials(model_text.text,6)
                                             power[ebanIndex] = power_text.text
-                                            cost_text.text = Database.getItemMaterials(model_text.text,9)
+                                            cost_text.text = Database.getItemMaterials(model_text.text,7)
                                             cost[ebanIndex] = cost_text.text
 
                                             if(kol_text.text==="0")
@@ -556,11 +556,11 @@ Rectangle {
 
                                     onActivated: {
                                         model_text.text = comboBox1.currentText;
-                                        volume_text.text = Database.getItemMaterials(model_text.text,4)
+                                        volume_text.text = Database.getItemMaterials(model_text.text,5)
                                         volume[ebanIndex] = volume_text.text
-                                        power_text.text = Database.getItemMaterials(model_text.text,5)
+                                        power_text.text = Database.getItemMaterials(model_text.text,6)
                                         power[ebanIndex] = power_text.text
-                                        cost_text.text = Database.getItemMaterials(model_text.text,9)
+                                        cost_text.text = Database.getItemMaterials(model_text.text,7)
                                         cost[ebanIndex] = cost_text.text
 
                                         if(kol_text.text==="0")
@@ -795,7 +795,7 @@ Rectangle {
                     Layout.preferredWidth: parent.width * 0.15
                     background: Rectangle
                     {
-                        color: parent.pressed ? "red" : (parent.hovered ? "darkred" : "gray")
+                        color: parent.pressed ? "#00733E" : (parent.hovered ? "#00B060" : "#00733E")
 
                         radius: parent.height * 0.1
                         border.color: "black"
@@ -815,6 +815,7 @@ Rectangle {
                         switch(index)
                         {
                         case 0:
+                            console.log(marksComboBox)
                             if(newData)
                                 newData = false
                             if(Transport_company.getOrderIndex(0) > 0)
@@ -856,10 +857,11 @@ Rectangle {
                             cost_text_sum.text = 0
                             break;
                         case 2:
-
-                            Transport_company.Order_vector[7] = vectorPlus(vectorSum)
+                            console.log(Transport_company.Order_vector[1])
+                            Transport_company.Order_vector[6] = vectorPlus(vectorSum)
                             Transport_company.Order_vector[1] = Database.getIdClientName(comboBox_clients.textAt(comboBox_clients.currentIndex))
                             Transport_company.Order_vector[2] = Database.getIdDriverName(comboBox_driver.textAt(comboBox_driver.currentIndex))
+                            console.log(Transport_company.Order_vector[1])
                             var temp_vector  = Database.getIdInvoice(Transport_company.Order_vector[0])
                             while(temp_vector.length < marksComboBox.length)
                                 temp_vector.push("-1")

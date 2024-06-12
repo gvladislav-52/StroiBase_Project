@@ -165,7 +165,7 @@ QVector<QString> Database_sql::getMaterialsVectorName(int index)
     std::thread th([&](){
         //qDebug() << "getDataVector thread: " << QThread::currentThreadId();
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT Model FROM Materials INNER JOIN Invoice ON Materials.id_material = Invoice.id_material WHERE Invoice.id_order = '"+QString::number(index)+"'ORDER BY id_invoice asc");
+        selectQuery.exec("SELECT material FROM Materials INNER JOIN Invoice ON Materials.id_material = Invoice.id_material WHERE Invoice.id_order = '"+QString::number(index)+"'ORDER BY id_invoice asc");
 
         while (selectQuery.next()) {
             // Получаем первое значение (индекс 0) из текущей строки
@@ -257,7 +257,7 @@ QVector<QString> Database_sql::getAllClientsName()
     QVector<QString> temp_vector;
     std::thread th([&](){
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT company FROM Clients");
+        selectQuery.exec("SELECT full_name FROM Clients");
 
         while (selectQuery.next()) {
             temp_vector.append(selectQuery.value(0).toString());
@@ -287,7 +287,7 @@ int Database_sql::getIdClientName(QString company)
     int temp_vector;
     std::thread th([&](){
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT * FROM Clients WHERE Company = '"+company+"' ORDER BY client_id ASC");
+        selectQuery.exec("SELECT * FROM Clients WHERE full_name = '"+company+"' ORDER BY client_id ASC");
 
         while (selectQuery.next())
             temp_vector = selectQuery.value(0).toInt();
@@ -302,7 +302,7 @@ QString Database_sql::getIdMaterialsName(QString mark)
     QString temp_vector;
     std::thread th([&](){
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT * FROM Materials WHERE model = '"+mark+"' ORDER BY id_material ASC");
+        selectQuery.exec("SELECT * FROM Materials WHERE material = '"+mark+"' ORDER BY id_material ASC");
 
         while (selectQuery.next())
             temp_vector = selectQuery.value(0).toString();
@@ -363,7 +363,7 @@ void Database_sql::orders_createNewData(QVector<QString> vec)
 {
     //std::thread th([&](){
     QSqlQuery selectQuery(db);
-    selectQuery.exec("INSERT INTO Orders (client_id, id, execution_date, placement_date, assignment_date, delivery_address, sumcost_new) VALUES ('"+vec[1]+"', '"+vec[2]+"', '"+vec[3]+"', '"+vec[4]+"', '"+vec[5]+"', '"+vec[6]+"', '"+vec[7]+"')");
+    selectQuery.exec("INSERT INTO Orders (client_id, id, placement_date, delivery_address, sumcost_new) VALUES ('"+vec[1]+"', '"+vec[2]+"', '"+vec[3]+"', '"+vec[4]+"', '"+vec[5]+"')");
     //});
     //std::this_thread::sleep_for(std::chrono::seconds(5));
     qDebug() << "order";
@@ -372,9 +372,10 @@ void Database_sql::orders_createNewData(QVector<QString> vec)
 
 void Database_sql::orders_addNewData(QVector<QString> vector)
 {
+    qDebug() << vector;
     std::thread th([&](){
         QSqlQuery selectQuery(db);
-        selectQuery.exec("UPDATE Orders SET client_id = '"+vector[1]+"', id = '"+vector[2]+"', execution_date = '"+vector[3]+"', placement_date = '"+vector[4]+"',  assignment_date = '"+vector[5]+"',  delivery_address = '"+vector[6]+"',  sumcost_new = '"+vector[7]+"'  WHERE id_order = '"+vector[0]+"';");
+        selectQuery.exec("UPDATE Orders SET client_id = '"+vector[1]+"', id = '"+vector[2]+"', placement_date = '"+vector[3]+"', delivery_address = '"+vector[4]+"',  sumcost_new = '"+vector[5]+"'  WHERE id_order = '"+vector[0]+"';");
         //selectQuery.exec("UPDATE Orders SET client_id = '" + vector.at(1) +"', id = '" + vector.at(2)+"', delivery_address = '" + vector.at(6) +"',placement_date = '" + vector.at(3) +"', assignment_date = '" + vector.at(4) +"', execution_date = '" + vector.at(5) +"', sumcost_new = '" + vector.at(7) +"' WHERE id_order = '" + vector.at(0) +"'");
     });
     th.join();
@@ -402,11 +403,12 @@ QVector<QString> Database_sql::getAllModelMaterials(QString temp, bool botemp)
 
 int Database_sql::getItemMaterials(QString temp, int index)
 {
+    qDebug() << temp << index;
     int temp_vector;
     std::thread th([&](){
         //qDebug() << "getDataVector thread: " << QThread::currentThreadId();
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT * FROM Materials WHERE Model = '"+temp+"' ORDER BY id_material ASC");
+        selectQuery.exec("SELECT * FROM Materials WHERE material = '"+temp+"' ORDER BY id_material ASC");
 
         while (selectQuery.next())
             temp_vector = selectQuery.value(index).toInt();
@@ -420,7 +422,7 @@ QString Database_sql::getMaterialsId(QString company)
     QString temp_vector;
     std::thread th([&](){
         QSqlQuery selectQuery(db);
-        selectQuery.exec("SELECT * FROM Materials WHERE Model = '"+company+"' ORDER BY id_material ASC");
+        selectQuery.exec("SELECT * FROM Materials WHERE material = '"+company+"' ORDER BY id_material ASC");
 
         while (selectQuery.next())
             temp_vector = selectQuery.value(0).toString();
@@ -470,6 +472,24 @@ void Database_sql::clients_addNewData(QVector<QString> vector)
         selectQuery.exec("UPDATE Clients SET full_name = '" + vector.at(1) +"', phone = '" + vector.at(2)+"', email = '" + vector.at(3) +"',address = '" + vector.at(4) +"' WHERE client_id = '" + vector.at(0) +"'");
     });
     th.join();
+}
+
+QVector<QString> Database_sql::getReportDataVector()
+{
+    QVector<QString> temp_vector;
+
+    QSqlQuery selectQuery(db);
+    selectQuery.exec("SELECT * FROM Clients ORDER BY client_id ASC");
+
+    while (selectQuery.next()) {
+        QSqlRecord record = selectQuery.record();
+        for (int i = 0; i < record.count(); ++i) {
+            temp_vector.append(selectQuery.value(i).toString());
+        }
+    }
+
+    qDebug() << temp_vector;
+    return temp_vector;
 }
 
 ///////////////////////////////////////////////////////////////////////////Materials/////////////////////////////////////////////////////////////////////////////

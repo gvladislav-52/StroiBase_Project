@@ -42,6 +42,8 @@ int main(int argc, char *argv[])
     ts_company.setOrderMaxIndex(db.getMaxElement("Orders"));
     ts_company.setOrderIndex(0);
 
+    client.setReport_Clients_Vector(db.getReportDataVector());
+    qDebug() << client.getReport_Clients_Vector();
 
     ts_company.setInvoice_vector(db.getInvoiceDataVector("Invoice","id_order",4));
     qDebug() << ts_company.getInvoice_vector();

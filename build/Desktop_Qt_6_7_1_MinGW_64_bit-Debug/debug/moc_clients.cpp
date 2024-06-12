@@ -39,6 +39,8 @@ constexpr auto qt_meta_stringdata_CLASSClientsENDCLASS = QtMocHelpers::stringDat
     "Clients",
     "Clients_vectorChanged",
     "",
+    "Report_Clients_VectorChanged",
+    "getReport_Clients_Vector",
     "getClientsIndex",
     "num",
     "getClientsMaxIndex",
@@ -48,7 +50,10 @@ constexpr auto qt_meta_stringdata_CLASSClientsENDCLASS = QtMocHelpers::stringDat
     "clients_clearVector",
     "setClients_vector",
     "newClients_vector",
-    "Clients_vector"
+    "setReport_Clients_Vector",
+    "newReport_Clients_Vector",
+    "Clients_vector",
+    "Report_Clients_Vector"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -61,37 +66,44 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSClientsENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
-       1,   71, // properties
+      10,   14, // methods
+       2,   94, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   56,    2, 0x06,    2 /* Public */,
+       1,    0,   74,    2, 0x06,    3 /* Public */,
+       3,    0,   75,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    1,   57,    2, 0x0a,    3 /* Public */,
-       5,    0,   60,    2, 0x0a,    5 /* Public */,
-       6,    1,   61,    2, 0x0a,    6 /* Public */,
-       7,    1,   64,    2, 0x0a,    8 /* Public */,
-       9,    0,   67,    2, 0x0a,   10 /* Public */,
-      10,    1,   68,    2, 0x0a,   11 /* Public */,
+       4,    0,   76,    2, 0x10a,    5 /* Public | MethodIsConst  */,
+       5,    1,   77,    2, 0x0a,    6 /* Public */,
+       7,    0,   80,    2, 0x0a,    8 /* Public */,
+       8,    1,   81,    2, 0x0a,    9 /* Public */,
+       9,    1,   84,    2, 0x0a,   11 /* Public */,
+      11,    0,   87,    2, 0x0a,   13 /* Public */,
+      12,    1,   88,    2, 0x0a,   14 /* Public */,
+      14,    1,   91,    2, 0x0a,   16 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Int, QMetaType::Int,    4,
+    QMetaType::QStringList,
+    QMetaType::Int, QMetaType::Int,    6,
     QMetaType::Int,
-    QMetaType::Void, QMetaType::Int,    4,
-    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QStringList,   11,
+    QMetaType::Void, QMetaType::QStringList,   13,
+    QMetaType::Void, QMetaType::QStringList,   15,
 
  // properties: name, type, flags
-      12, QMetaType::QStringList, 0x00015903, uint(0), 0,
+      16, QMetaType::QStringList, 0x00015903, uint(0), 0,
+      17, QMetaType::QStringList, 0x00015903, uint(1), 0,
 
        0        // eod
 };
@@ -105,10 +117,16 @@ Q_CONSTINIT const QMetaObject Clients::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSClientsENDCLASS_t,
         // property 'Clients_vector'
         QtPrivate::TypeAndForceComplete<QList<QString>, std::true_type>,
+        // property 'Report_Clients_Vector'
+        QtPrivate::TypeAndForceComplete<QList<QString>, std::true_type>,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<Clients, std::true_type>,
         // method 'Clients_vectorChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'Report_Clients_VectorChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'getReport_Clients_Vector'
+        QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>,
         // method 'getClientsIndex'
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
@@ -124,6 +142,9 @@ Q_CONSTINIT const QMetaObject Clients::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'setClients_vector'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QVector<QString> &, std::false_type>,
+        // method 'setReport_Clients_Vector'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QVector<QString> &, std::false_type>
     >,
     nullptr
@@ -136,14 +157,18 @@ void Clients::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         (void)_t;
         switch (_id) {
         case 0: _t->Clients_vectorChanged(); break;
-        case 1: { int _r = _t->getClientsIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])));
+        case 1: _t->Report_Clients_VectorChanged(); break;
+        case 2: { QList<QString> _r = _t->getReport_Clients_Vector();
+            if (_a[0]) *reinterpret_cast< QList<QString>*>(_a[0]) = std::move(_r); }  break;
+        case 3: { int _r = _t->getClientsIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 2: { int _r = _t->getClientsMaxIndex();
+        case 4: { int _r = _t->getClientsMaxIndex();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 3: _t->setClientsIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->setClientsMaxIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 5: _t->clients_clearVector(); break;
-        case 6: _t->setClients_vector((*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[1]))); break;
+        case 5: _t->setClientsIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->setClientsMaxIndex((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->clients_clearVector(); break;
+        case 8: _t->setClients_vector((*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[1]))); break;
+        case 9: _t->setReport_Clients_Vector((*reinterpret_cast< std::add_pointer_t<QList<QString>>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -155,12 +180,20 @@ void Clients::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
                 return;
             }
         }
+        {
+            using _t = void (Clients::*)();
+            if (_t _q_method = &Clients::Report_Clients_VectorChanged; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 1;
+                return;
+            }
+        }
     } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<Clients *>(_o);
         (void)_t;
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast< QList<QString>*>(_v) = _t->getClients_vector(); break;
+        case 1: *reinterpret_cast< QList<QString>*>(_v) = _t->getReport_Clients_Vector(); break;
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
@@ -169,6 +202,7 @@ void Clients::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         void *_v = _a[0];
         switch (_id) {
         case 0: _t->setClients_vector(*reinterpret_cast< QList<QString>*>(_v)); break;
+        case 1: _t->setReport_Clients_Vector(*reinterpret_cast< QList<QString>*>(_v)); break;
         default: break;
         }
     } else if (_c == QMetaObject::ResetProperty) {
@@ -195,18 +229,18 @@ int Clients::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 10;
     }else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -215,5 +249,11 @@ int Clients::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void Clients::Clients_vectorChanged()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void Clients::Report_Clients_VectorChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

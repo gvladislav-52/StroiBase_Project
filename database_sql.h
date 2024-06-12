@@ -12,6 +12,7 @@ class Database_sql : public QObject
 public:
     explicit Database_sql(QObject *parent = nullptr);
 public slots:
+    QVector<QString> getReportDataVector();
     int getLastIndexOrder();
     void invoice_truncate(QString index);
     QVector<QString> getIdInvoice(int index);

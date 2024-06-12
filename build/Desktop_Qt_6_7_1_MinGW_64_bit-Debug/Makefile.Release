@@ -137,11 +137,20 @@ release/qrc_qml.cpp: ../../qml.qrc \
 		../../Driver_page.qml \
 		../../Orders_page.qml \
 		../../Materials_page.qml \
+		../../Report.qml \
 		../../Main_page.qml \
 		../../Clients_page.qml \
 		../../Header.qml \
 		../../Supplier_page.qml \
-		../../main.qml
+		../../main.qml \
+		../../Image/detail.png \
+		../../Image/STROIBASE.png \
+		../../Image/ButtonIcon/arrow.png \
+		../../Image/ButtonIcon/delete.png \
+		../../Image/ButtonIcon/save.png \
+		../../Image/ButtonIcon/add.png \
+		../../Image/ButtonIcon/delete2.png \
+		../../Image/ButtonIcon/leftArrow.png
 	C:\Qt\6.7.1\mingw_64\bin\rcc.exe -name qml --no-zstd ..\..\qml.qrc -o release\qrc_qml.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -1998,7 +2007,9 @@ release/main.o: ../../main.cpp C:/Qt/6.7.1/mingw_64/include/QtGui/QGuiApplicatio
 		C:/Qt/6.7.1/mingw_64/include/QtSql/qsqlresult.h \
 		C:/Qt/6.7.1/mingw_64/include/QtSql/qtsqlversion.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../orderstroibase.h \
 		../../suppliers.h \
+		../../materials.h \
 		../../clients.h \
 		../../drivers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp

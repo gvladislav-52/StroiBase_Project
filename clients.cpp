@@ -41,3 +41,16 @@ void Clients::setClients_vector(const QVector<QString> &newClients_vector)
     m_Clients_vector = newClients_vector;
     emit Clients_vectorChanged();
 }
+
+QVector<QString> Clients::getReport_Clients_Vector() const
+{
+    return m_Report_Clients_Vector;
+}
+
+void Clients::setReport_Clients_Vector(const QVector<QString> &newReport_Clients_Vector)
+{
+    if (m_Report_Clients_Vector == newReport_Clients_Vector)
+        return;
+    m_Report_Clients_Vector = newReport_Clients_Vector;
+    emit Report_Clients_VectorChanged();
+}
